@@ -38,3 +38,5 @@ class MinStack(object):
         :rtype: int
         """
         return min(self.s)
+    
+    #Use deque for faster runtimes
