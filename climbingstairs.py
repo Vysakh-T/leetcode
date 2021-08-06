@@ -1,17 +1,15 @@
 class Solution(object):
-    def climbStairs(self, n):
+    def climbStairs(self, n, memo = {}):
         """
         :type n: int
         :rtype: int
         """
-        count = [0]
-        def rec(i,n):
-            if(i==n+1):
-                return
-            if(i==n):
-                count[0]=count[0]+1
-                return
-            rec(i+1,n)
-            rec(i+2,n)
-        rec(0,n)
-        return count[0]
+        if memo.get(n)!=None:
+            return memo[n]
+        if n == 1:
+            return 1
+        elif n==2:
+            return 2
+        else:
+            memo[n] = self.climbStairs(n-1,memo) + self.climbStairs(n-2,memo)
+            return memo[n]
